@@ -2,8 +2,9 @@
 # * Uncomment Enable Whitelist And Blacklist All
 README.md
 **/.git
-**/..gitignore
+**/.gitignore
 **/.DS_Store
 **/node_modules/
+**/test/
 
 # !WHITELIST
