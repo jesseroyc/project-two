@@ -1,13 +1,13 @@
-// const mysql = require('mysql2/promise');
-// const dbConfig = require('../configs/db.configs');
+const mysql = require('mysql2/promise');
+const dbConfig = require('../configs/db.configs');
 
-// async function query(sql, params) {
-//   const connection = await mysql.createConnection(dbConfig);
-//   const [results, ] = await connection.execute(sql, params);
+async function query(sql, params) {
+  const connection = await mysql.createConnection(dbConfig);
+  const [results, ] = await connection.execute(sql, params);
 
-//   return results;
-// }
+  return results;
+}
 
-// module.exports = {
-//   query
-// }
+module.exports = {
+  query
+}
