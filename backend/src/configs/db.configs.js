@@ -1,18 +1,16 @@
-const fs = require("fs");
-const knex = require('knex');
+const env = process.env;
+const fs = require('fs');
 
-const readFileSync = filename => fs.readFileSync(filename).toString("utf8");
+const db = {
+    host: env.DB_HOST,
+    user: env.DB_USER,
+    password: env.DB_PASSWORD,
+    database: env.DB_NAME || 'programming_languages',
+    port: env.DB_PORT || 3306,
+    ssl: {  
+      mode: 'VERIFY_IDENTITY',
+      ca: fs.readFileSync('/etc/ssl/cert.pem', 'utf-8'),
+    }
+};
 
-module.exports = knex({
-    client: 'mysql2',
-    connection: {
-      host: process.env.DATABASE_HOST || "localhost",
-      port: process.env.DATABASE_PORT,
-      database: process.env.DATABASE_DB,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD
-        ? readFileSync(process.env.DATABASE_PASSWORD)
-        : null
-    },
-    port: process.env.PORT || 8080
-})
+module.exports = db;
